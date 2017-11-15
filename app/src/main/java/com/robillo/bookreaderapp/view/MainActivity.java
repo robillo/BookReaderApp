@@ -20,8 +20,9 @@ import retrofit2.Response;
  * Created by robinkamboj on 15/11/17.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainMvpView {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private ApiInterface mApiService;
 
     @Override
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    }
+
+    @Override
+    public void getContent() {
         mApiService = ApiClient.INSTANCE.getClient().create(ApiInterface.class);
         Call<List<Content>> call = mApiService.getRushContent(1);
         if(call!=null){
