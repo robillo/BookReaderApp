@@ -2,7 +2,13 @@ package com.robillo.bookreaderapp.view;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.robillo.bookreaderapp.R;
@@ -22,14 +28,34 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
+    private int temp = 0;
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private int NUM_PAGES = 5;
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private ViewPager mContentPager;
+
+    private ProgressBar mContentProgress;
+
     @SuppressWarnings("FieldCanBeLocal")
     private ApiInterface mApiService;
+
+    private List<Content> mContents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setUp();
+    }
+
+    @Override
+    public void setUp() {
+        mContentPager = findViewById(R.id.content_pager);
+        mContentProgress = findViewById(R.id.content_progress);
+        getContent();
     }
 
     @Override
@@ -40,7 +66,10 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
             call.enqueue(new Callback<List<Content>>() {
                 @Override
                 public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
-                    Toast.makeText(MainActivity.this, response.body().get(0).getContent(), Toast.LENGTH_LONG).show();
+                    mContents = response.body();
+                    //noinspection ConstantConditions
+                    mContentProgress.setMax(response.body().size());
+                    setFragmentsForContents(mContents);
                 }
 
                 @Override
@@ -49,5 +78,44 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
                 }
             });
         }
+    }
+
+    @Override
+    public void setFragmentsForContents(List<Content> contents) {
+        NUM_PAGES = contents.size();
+        mContentPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
+    }
+
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            if((position)>temp){
+                mContentProgress.setProgress(position+1);
+            }
+            else if((position)<temp){
+                mContentProgress.setProgress(position-1);
+            }
+            return new ContentFragment();
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            return super.instantiateItem(container, position);
+        }
+
+        @Override
+        public float getPageWidth(int position) {
+            return 1.0f;
+        }
+
     }
 }
