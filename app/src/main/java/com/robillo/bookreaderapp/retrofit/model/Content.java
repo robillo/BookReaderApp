@@ -23,6 +23,15 @@ public class Content {
     private String attr;
     private String datetime;
 
+    public Content(String content_id, String rush_id, String content, String page_no, String attr, String datetime) {
+        this.content_id = content_id;
+        this.rush_id = rush_id;
+        this.content = content;
+        this.page_no = page_no;
+        this.attr = attr;
+        this.datetime = datetime;
+    }
+
     public String getContent_id() {
         return content_id;
     }
