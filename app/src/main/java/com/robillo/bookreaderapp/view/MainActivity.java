@@ -26,21 +26,16 @@ import retrofit2.Response;
  * Created by robinkamboj on 15/11/17.
  */
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
     private int temp = 0;
-
-    @SuppressWarnings("FieldCanBeLocal")
     private int NUM_PAGES = 5;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private ViewPager mContentPager;
-
     private ProgressBar mContentProgress;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private ApiInterface mApiService;
-
     private List<Content> mContents;
 
     @Override
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
             else if((position)<temp){
                 mContentProgress.setProgress(position-1);
             }
-            return new ContentFragment();
+            return ContentFragment.newInstance(mContents.get(position).getContent());
         }
 
         @Override
