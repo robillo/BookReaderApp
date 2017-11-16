@@ -21,7 +21,8 @@
             android:layout_weight="1"
             android:src="@drawable/ic_zoom_in_white_24dp"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/increase_text_size"/>
+            android:contentDescription="@string/increase_text_size"
+            android:id="@+id/text_plus"/>
 
         <ImageButton
             android:layout_width="0sp"
@@ -29,7 +30,8 @@
             android:layout_weight="1"
             android:src="@drawable/ic_zoom_out_white_24dp"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/decrease_text_size"/>
+            android:contentDescription="@string/decrease_text_size"
+            android:id="@+id/text_minus"/>
 
         <ImageButton
             android:layout_width="0sp"
@@ -37,7 +39,8 @@
             android:layout_weight="1"
             android:src="@drawable/ic_change_history_white_24dp"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/change_font"/>
+            android:contentDescription="@string/change_font"
+            android:id="@+id/text_font"/>
 
         <ImageButton
             android:layout_width="0sp"
@@ -45,7 +48,8 @@
             android:layout_weight="1"
             android:src="@drawable/ic_swap_vertical_circle_white_24dp"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/change_theme"/>
+            android:contentDescription="@string/change_theme"
+            android:id="@+id/content_theme"/>
 
     </LinearLayout>
 
