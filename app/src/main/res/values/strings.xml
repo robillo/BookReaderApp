@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="increase_text_size">Increase Text Size</string>
+    <string name="decrease_text_size">Decrease Text Size</string>
+    <string name="change_font">Change Font</string>
+    <string name="change_theme">Change Theme</string>
 </resources>
