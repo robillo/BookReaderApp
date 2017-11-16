@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.robillo.bookreaderapp.R;
@@ -15,10 +16,11 @@ import com.robillo.bookreaderapp.R;
  * Created by robinkamboj on 15/11/17.
  */
 
-public class ContentFragment extends Fragment implements ContentMvpView {
+public class ContentFragment extends Fragment implements ContentMvpView, View.OnClickListener {
 
     TextView mContentTextView;
     String content;
+    ScrollView mScrollContent;
 
     public static ContentFragment newInstance(String content) {
         Bundle bundle = new Bundle();
@@ -42,7 +44,21 @@ public class ContentFragment extends Fragment implements ContentMvpView {
     @Override
     public void setUp(View v) {
         mContentTextView = v.findViewById(R.id.content_text);
+        mScrollContent = v.findViewById(R.id.scroll_content);
+
+        mContentTextView.setOnClickListener(this);
         content = getArguments().getString("content");
         mContentTextView.setText(Html.fromHtml(content));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.content_text:{
+                MainActivity activity = (MainActivity) getActivity();
+                activity.hideShowCustomizeLayout();
+                break;
+            }
+        }
     }
 }

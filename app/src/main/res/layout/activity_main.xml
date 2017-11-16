@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context="com.robillo.bookreaderapp.view.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:id="@+id/customize_content_layout">
+
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="0sp"

@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
     private ViewPager mContentPager;
     private ProgressBar mContentProgress;
+    private LinearLayout mCustomizeLinearLayout;
 
     private ApiInterface mApiService;
     private List<Content> mContents;
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
     public void setUp() {
         mContentPager = findViewById(R.id.content_pager);
         mContentProgress = findViewById(R.id.content_progress);
+        mCustomizeLinearLayout = findViewById(R.id.customize_content_layout);
+
         getContent();
     }
 
@@ -81,6 +86,16 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
         NUM_PAGES = contents.size();
         mContentPager.addOnPageChangeListener(viewPagerPageChangeListener);
         mContentPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
+    }
+
+    @Override
+    public void hideShowCustomizeLayout() {
+        if(mCustomizeLinearLayout.getVisibility()==View.VISIBLE){
+            mCustomizeLinearLayout.setVisibility(View.GONE);
+        }
+        else {
+            mCustomizeLinearLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {

@@ -16,4 +16,6 @@ public interface MainMvpView {
 
     void setFragmentsForContents(List<Content> contents);
 
+    void hideShowCustomizeLayout();
+
 }
