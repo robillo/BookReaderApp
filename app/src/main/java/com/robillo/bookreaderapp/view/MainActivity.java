@@ -29,7 +29,7 @@ import retrofit2.Response;
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
-    private int NUM_PAGES = 5;
+    private int NUM_PAGES = 0;
 
     private ViewPager mContentPager;
     private ProgressBar mContentProgress;
@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
                     mContents = response.body();
                     //noinspection ConstantConditions
                     mContentProgress.setMax(response.body().size());
+                    mContentProgress.setProgress(1);
+                    //noinspection ConstantConditions
+                    Toast.makeText(MainActivity.this, "MAX is " + response.body().size(), Toast.LENGTH_SHORT).show();
                     setFragmentsForContents(mContents);
                 }
 
@@ -77,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
     @Override
     public void setFragmentsForContents(List<Content> contents) {
         NUM_PAGES = contents.size();
+        mContentPager.addOnPageChangeListener(viewPagerPageChangeListener);
         mContentPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
     }
 
@@ -87,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
         @Override
         public Fragment getItem(int position) {
-            mContentProgress.setProgress(position+1);
             return ContentFragment.newInstance(mContents.get(position).getContent());
         }
 
@@ -107,4 +110,22 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
         }
 
     }
+
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            mContentProgress.setProgress(position+1);
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
 }
