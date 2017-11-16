@@ -12,6 +12,7 @@
         android:textSize="20sp"
         android:padding="10sp"
         android:id="@+id/content_text"
+        android:lineSpacingMultiplier="1.5"
         android:textColor="#000000"/>
 
 </ScrollView>

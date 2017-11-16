@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
                     mContentProgress.setMax(response.body().size());
                     mContentProgress.setProgress(1);
                     //noinspection ConstantConditions
-                    Toast.makeText(MainActivity.this, "MAX is " + response.body().size(), Toast.LENGTH_SHORT).show();
                     setFragmentsForContents(mContents);
                 }
 
