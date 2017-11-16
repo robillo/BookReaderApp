@@ -1,15 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.robillo.bookreaderapp.view.ContentFragment">
+    tools:context="com.robillo.bookreaderapp.view.ContentFragment"
+    android:background="#FFFFFF">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:textSize="30sp"
-        android:isScrollContainer="true"
-        android:id="@+id/content_text"/>
+        android:textSize="20sp"
+        android:padding="10sp"
+        android:id="@+id/content_text"
+        android:textColor="#000000"/>
 
-</FrameLayout>
+</ScrollView>

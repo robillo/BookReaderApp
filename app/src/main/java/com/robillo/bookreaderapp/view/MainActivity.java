@@ -29,7 +29,6 @@ import retrofit2.Response;
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
-    private int temp = 0;
     private int NUM_PAGES = 5;
 
     private ViewPager mContentPager;
@@ -88,12 +87,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
         @Override
         public Fragment getItem(int position) {
-            if((position)>temp){
-                mContentProgress.setProgress(position+1);
-            }
-            else if((position)<temp){
-                mContentProgress.setProgress(position-1);
-            }
+            mContentProgress.setProgress(position+1);
             return ContentFragment.newInstance(mContents.get(position).getContent());
         }
 
