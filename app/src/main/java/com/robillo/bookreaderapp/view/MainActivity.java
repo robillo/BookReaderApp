@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -91,10 +93,44 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
     @Override
     public void hideShowCustomizeLayout() {
         if(mCustomizeLinearLayout.getVisibility()==View.VISIBLE){
-            mCustomizeLinearLayout.setVisibility(View.GONE);
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    mCustomizeLinearLayout.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            mCustomizeLinearLayout.startAnimation(animation);
         }
         else {
-            mCustomizeLinearLayout.setVisibility(View.VISIBLE);
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    mCustomizeLinearLayout.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            mCustomizeLinearLayout.startAnimation(animation);
         }
     }
 
