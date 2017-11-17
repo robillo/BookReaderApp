@@ -7,4 +7,6 @@
     <string name="decrease_text_size">Decrease Text Size</string>
     <string name="change_font">Change Font</string>
     <string name="change_theme">Change Theme</string>
+    <string name="text_line_spacing">Text Line Spacing</string>
+    <string name="change_content_padding">Change Content Padding</string>
 </resources>

@@ -26,4 +26,8 @@ public interface MainMvpView {
 
     void changeTheme();
 
+    void changeLineSpacing();
+
+    void changeContentPadding();
+
 }

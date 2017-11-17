@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     private ViewPager mContentPager;
     private ProgressBar mContentProgress;
     private LinearLayout mCustomizeLinearLayout;
-    private ImageButton mTextviewIncrease, mTextviewDecrease, mTextviewFont, mContentTheme;
+    private ImageButton mTextviewIncrease, mTextviewDecrease, mTextviewFont, mContentTheme, mLineSpacing, mContentPadding;
 
     private ApiInterface mApiService;
     private List<Content> mContents;
@@ -62,7 +62,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         mTextviewDecrease = findViewById(R.id.text_minus);
         mTextviewFont = findViewById(R.id.text_font);
         mContentTheme = findViewById(R.id.content_theme);
+        mLineSpacing = findViewById(R.id.line_spacing);
+        mContentPadding = findViewById(R.id.content_padding);
 
+        mLineSpacing.setOnClickListener(this);
+        mContentPadding.setOnClickListener(this);
+        mTextviewFont.setOnClickListener(this);
+        mContentTheme.setOnClickListener(this);
         mTextviewIncrease.setOnClickListener(this);
         mTextviewDecrease.setOnClickListener(this);
 
@@ -165,6 +171,16 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     }
 
     @Override
+    public void changeLineSpacing() {
+
+    }
+
+    @Override
+    public void changeContentPadding() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.text_plus:{
@@ -181,6 +197,14 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
             }
             case R.id.content_theme:{
                 changeTheme();
+                break;
+            }
+            case R.id.line_spacing:{
+                changeLineSpacing();
+                break;
+            }
+            case R.id.content_padding:{
+                changeContentPadding();
                 break;
             }
         }
