@@ -18,4 +18,12 @@ public interface MainMvpView {
 
     void hideShowCustomizeLayout();
 
+    void increaseTextSize();
+
+    void decreaseTextSize();
+
+    void changeFont();
+
+    void changeTheme();
+
 }

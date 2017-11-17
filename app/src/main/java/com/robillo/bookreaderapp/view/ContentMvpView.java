@@ -9,4 +9,5 @@ import android.view.View;
 public interface ContentMvpView {
 
     void setUp(View v);
+
 }

@@ -1,6 +1,7 @@
 package com.robillo.bookreaderapp.view;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -31,13 +33,14 @@ import retrofit2.Response;
  */
 
 @SuppressWarnings("FieldCanBeLocal")
-public class MainActivity extends AppCompatActivity implements MainMvpView {
+public class MainActivity extends AppCompatActivity implements MainMvpView, View.OnClickListener {
 
     private int NUM_PAGES = 0;
 
     private ViewPager mContentPager;
     private ProgressBar mContentProgress;
     private LinearLayout mCustomizeLinearLayout;
+    private ImageButton mTextviewIncrease, mTextviewDecrease, mTextviewFont, mContentTheme;
 
     private ApiInterface mApiService;
     private List<Content> mContents;
@@ -55,6 +58,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
         mContentPager = findViewById(R.id.content_pager);
         mContentProgress = findViewById(R.id.content_progress);
         mCustomizeLinearLayout = findViewById(R.id.customize_content_layout);
+        mTextviewIncrease = findViewById(R.id.text_plus);
+        mTextviewDecrease = findViewById(R.id.text_minus);
+        mTextviewFont = findViewById(R.id.text_font);
+        mContentTheme = findViewById(R.id.content_theme);
+
+        mTextviewIncrease.setOnClickListener(this);
+        mTextviewDecrease.setOnClickListener(this);
 
         getContent();
     }
@@ -131,6 +141,48 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
                 }
             });
             mCustomizeLinearLayout.startAnimation(animation);
+        }
+    }
+
+    @Override
+    public void increaseTextSize() {
+
+    }
+
+    @Override
+    public void decreaseTextSize() {
+
+    }
+
+    @Override
+    public void changeFont() {
+
+    }
+
+    @Override
+    public void changeTheme() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.text_plus:{
+                increaseTextSize();
+                break;
+            }
+            case R.id.text_minus:{
+                decreaseTextSize();
+                break;
+            }
+            case R.id.text_font:{
+                changeFont();
+                break;
+            }
+            case R.id.content_theme:{
+                changeTheme();
+                break;
+            }
         }
     }
 
