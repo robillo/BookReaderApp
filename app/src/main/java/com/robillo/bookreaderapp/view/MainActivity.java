@@ -180,7 +180,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     @Override
     public void changeLineSpacing() {
-
+        if(mPreferences.getFloat("line_spacing", (float) 1.5) == 1.5){
+            mPreferences.edit().putFloat("line_spacing", (float) 2.0).apply();
+        }
+        else {
+            mPreferences.edit().putFloat("line_spacing", (float) 1.5).apply();
+        }
+        refreshFragments();
     }
 
     @Override

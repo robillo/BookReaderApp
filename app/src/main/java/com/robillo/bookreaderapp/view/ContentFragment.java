@@ -58,6 +58,7 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
     @Override
     public void refreshAttributes() {
         mContentTextView.setTextSize(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("text_size", 20));
+        mContentTextView.setLineSpacing(0, getActivity().getPreferences(Context.MODE_PRIVATE).getFloat("line_spacing", (float) 1.5));
     }
 
     @Override
