@@ -1,5 +1,7 @@
 package com.robillo.bookreaderapp.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
@@ -49,6 +51,8 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
         mContentTextView.setOnClickListener(this);
         content = getArguments().getString("content");
         mContentTextView.setText(Html.fromHtml(content));
+
+        mContentTextView.setTextSize(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("text_size", 20));
     }
 
     @Override

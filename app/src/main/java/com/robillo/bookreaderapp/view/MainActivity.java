@@ -1,6 +1,7 @@
 package com.robillo.bookreaderapp.view;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     private ApiInterface mApiService;
     private List<Content> mContents;
+    private SharedPreferences mPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         mContentTheme.setOnClickListener(this);
         mTextviewIncrease.setOnClickListener(this);
         mTextviewDecrease.setOnClickListener(this);
+
+        mPreferences = getPreferences(MODE_PRIVATE);
 
         getContent();
     }
@@ -152,12 +156,12 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     @Override
     public void increaseTextSize() {
-
+        mPreferences.edit().putInt("text_size", mPreferences.getInt("text_size", 20) + 2).apply();
     }
 
     @Override
     public void decreaseTextSize() {
-
+        mPreferences.edit().putInt("text_size", mPreferences.getInt("text_size", 20) - 2).apply();
     }
 
     @Override
@@ -242,6 +246,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         @Override
         public void onPageSelected(int position) {
             mContentProgress.setProgress(position+1);
+//            getContent();
         }
 
         @Override
