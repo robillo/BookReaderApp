@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     @Override
     public void refreshFragments() {
-        Toast.makeText(this, "FRAGMENTS NUMBER IS " + getSupportFragmentManager().getFragments().size(), Toast.LENGTH_SHORT).show();
+        setFragmentsForContents(mContents);
     }
 
     @Override
@@ -255,8 +255,6 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         @Override
         public void onPageSelected(int position) {
             mContentProgress.setProgress(position+1);
-            refreshFragments();
-//            getContent();
         }
 
         @Override
