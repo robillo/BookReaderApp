@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     private ApiInterface mApiService;
     private List<Content> mContents;
     private SharedPreferences mPreferences;
+    private ScreenSlidePagerAdapter mScreenSlidePagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         mTextviewDecrease.setOnClickListener(this);
 
         mPreferences = getPreferences(MODE_PRIVATE);
+        mScreenSlidePagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
 
         getContent();
     }
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     public void setFragmentsForContents(List<Content> contents) {
         NUM_PAGES = contents.size();
         mContentPager.addOnPageChangeListener(viewPagerPageChangeListener);
-        mContentPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
+        mContentPager.setAdapter(mScreenSlidePagerAdapter);
     }
 
     @Override
@@ -157,11 +159,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     @Override
     public void increaseTextSize() {
         mPreferences.edit().putInt("text_size", mPreferences.getInt("text_size", 20) + 2).apply();
+        refreshFragments();
     }
 
     @Override
     public void decreaseTextSize() {
         mPreferences.edit().putInt("text_size", mPreferences.getInt("text_size", 20) - 2).apply();
+        refreshFragments();
     }
 
     @Override
@@ -182,6 +186,11 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     @Override
     public void changeContentPadding() {
 
+    }
+
+    @Override
+    public void refreshFragments() {
+        Toast.makeText(this, "FRAGMENTS NUMBER IS " + getSupportFragmentManager().getFragments().size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -246,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         @Override
         public void onPageSelected(int position) {
             mContentProgress.setProgress(position+1);
+            refreshFragments();
 //            getContent();
         }
 

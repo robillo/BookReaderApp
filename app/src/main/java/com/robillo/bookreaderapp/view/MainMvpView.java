@@ -30,4 +30,6 @@ public interface MainMvpView {
 
     void changeContentPadding();
 
+    void refreshFragments();
+
 }

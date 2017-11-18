@@ -52,6 +52,11 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
         content = getArguments().getString("content");
         mContentTextView.setText(Html.fromHtml(content));
 
+        refreshAttributes();
+    }
+
+    @Override
+    public void refreshAttributes() {
         mContentTextView.setTextSize(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("text_size", 20));
     }
 

@@ -10,4 +10,6 @@ public interface ContentMvpView {
 
     void setUp(View v);
 
+    void refreshAttributes();
+
 }
