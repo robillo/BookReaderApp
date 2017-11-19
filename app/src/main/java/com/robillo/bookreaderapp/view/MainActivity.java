@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
     @Override
     public void hideShowCustomizeLayout() {
         if(mCustomizeLinearLayout.getVisibility()==View.VISIBLE){
-            Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
             animation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
             mCustomizeLinearLayout.startAnimation(animation);
         }
         else {
-            Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.top_down);
             animation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
