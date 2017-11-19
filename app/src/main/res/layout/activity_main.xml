@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="@color/colorTextThree"
+        android:background="@color/colorPrimary"
         android:id="@+id/customize_content_layout">
 
         <ImageButton

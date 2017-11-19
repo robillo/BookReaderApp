@@ -2,6 +2,7 @@ package com.robillo.bookreaderapp.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
@@ -59,6 +60,8 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
     public void refreshAttributes() {
         mContentTextView.setTextSize(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("text_size", 20));
         mContentTextView.setLineSpacing(0, getActivity().getPreferences(Context.MODE_PRIVATE).getFloat("line_spacing", (float) 1.5));
+        int pad = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("content_padding", 10);
+        mContentTextView.setPadding(pad, 10, pad, 10);
     }
 
     @Override

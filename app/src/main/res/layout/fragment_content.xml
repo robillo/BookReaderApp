@@ -10,9 +10,10 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:textSize="20sp"
-        android:padding="10sp"
+        android:padding="60px"
         android:id="@+id/content_text"
         android:lineSpacingMultiplier="1.5"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        tools:ignore="PxUsage" />
 
 </ScrollView>

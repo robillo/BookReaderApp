@@ -2,6 +2,7 @@ package com.robillo.bookreaderapp.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -191,7 +192,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     @Override
     public void changeContentPadding() {
-
+        if(mPreferences.getInt("content_padding", 60) == 60){
+            mPreferences.edit().putInt("content_padding", 90).apply();
+        }
+        else {
+            mPreferences.edit().putInt("content_padding", 60).apply();
+        }
+        refreshFragments();
     }
 
     @Override
