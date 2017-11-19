@@ -63,7 +63,7 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
         mContentTextView.setLineSpacing(0, getActivity().getPreferences(Context.MODE_PRIVATE).getFloat("line_spacing", (float) 1.5));
         int pad = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("content_padding", 10);
         mContentTextView.setPadding(pad, 10, pad, 10);
-        if(getActivity().getPreferences(Context.MODE_PRIVATE).getString("theme", "night").equals("night")){
+        if(getActivity().getPreferences(Context.MODE_PRIVATE).getString("theme", "day").equals("night")){
             mContentTextView.setTextColor(Color.WHITE);
             mContentTextView.setBackgroundColor(Color.BLACK);
         }
