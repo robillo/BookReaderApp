@@ -3,6 +3,7 @@ package com.robillo.bookreaderapp.view;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
@@ -62,6 +63,14 @@ public class ContentFragment extends Fragment implements ContentMvpView, View.On
         mContentTextView.setLineSpacing(0, getActivity().getPreferences(Context.MODE_PRIVATE).getFloat("line_spacing", (float) 1.5));
         int pad = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("content_padding", 10);
         mContentTextView.setPadding(pad, 10, pad, 10);
+        if(getActivity().getPreferences(Context.MODE_PRIVATE).getString("theme", "night").equals("night")){
+            mContentTextView.setTextColor(Color.WHITE);
+            mContentTextView.setBackgroundColor(Color.BLACK);
+        }
+        else {
+            mContentTextView.setTextColor(Color.BLACK);
+            mContentTextView.setBackgroundColor(Color.WHITE);
+        }
     }
 
     @Override

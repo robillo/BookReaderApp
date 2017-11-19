@@ -176,7 +176,15 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
     @Override
     public void changeTheme() {
-
+        if(mPreferences.getString("theme", "day").equals("night")){
+            mPreferences.edit().putString("theme", "day").apply();
+            mCustomizeLinearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+        else {
+            mPreferences.edit().putString("theme", "night").apply();
+            mCustomizeLinearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+        refreshFragments();
     }
 
     @Override
