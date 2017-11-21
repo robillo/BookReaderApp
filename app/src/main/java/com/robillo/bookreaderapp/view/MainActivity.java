@@ -38,6 +38,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements MainMvpView, View.OnClickListener {
 
     private int NUM_PAGES = 0;
+    private static int mCurrentPage = 0;
 
     private ViewPager mContentPager;
     private ProgressBar mContentProgress;
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
         NUM_PAGES = contents.size();
         mContentPager.addOnPageChangeListener(viewPagerPageChangeListener);
         mContentPager.setAdapter(mScreenSlidePagerAdapter);
+        mContentPager.setCurrentItem(mCurrentPage);
     }
 
     @Override
@@ -275,6 +277,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView, View
 
         @Override
         public void onPageSelected(int position) {
+            mCurrentPage = position;
             mContentProgress.setProgress(position+1);
         }
 
